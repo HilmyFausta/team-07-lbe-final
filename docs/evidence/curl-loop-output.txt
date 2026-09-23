@@ -1,0 +1,65 @@
+hilmyfausta@fausta:~$ for i in $(seq 1 50); do
+  HTML=$(curl -s http://172.198.228.9)
+  if echo "$HTML" | grep -q "Yahdilil Haq Sarifuddin"; then
+    echo "[$i] -> punya Dilil"
+  elif echo "$HTML" | grep -q "Darwisy Ahmad Alfayyadl"; then
+    echo "[$i] -> punya Darwis"
+  elif echo "$HTML" | grep -q "Muhammad Adinata Parikesit"; then
+    echo "[$i] -> punya Didi"
+  elif echo "$HTML" | grep -q "Hilmy Fausta Pratama"; then
+    echo "[$i] -> punya Hilmy"
+  fi
+  sleep 0.3
+done
+
+[1] -> punya Darwis
+[2] -> punya Didi
+[3] -> punya Hilmy
+[4] -> punya Didi
+[5] -> punya Didi
+[6] -> punya Dilil
+[7] -> punya Didi
+[8] -> punya Dilil
+[9] -> punya Darwis
+[10] -> punya Dilil
+[11] -> punya Dilil
+[12] -> punya Hilmy
+[13] -> punya Didi
+[14] -> punya Didi
+[15] -> punya Hilmy
+[16] -> punya Didi
+[17] -> punya Didi
+[18] -> punya Darwis
+[19] -> punya Didi
+[20] -> punya Dilil
+[21] -> punya Hilmy
+[22] -> punya Dilil
+[23] -> punya Didi
+[24] -> punya Darwis
+[25] -> punya Didi
+[26] -> punya Dilil
+[27] -> punya Darwis
+[28] -> punya Hilmy
+[29] -> punya Hilmy
+[30] -> punya Hilmy
+[31] -> punya Darwis
+[32] -> punya Didi
+[33] -> punya Darwis
+[34] -> punya Darwis
+[35] -> punya Darwis
+[36] -> punya Didi
+[37] -> punya Hilmy
+[38] -> punya Hilmy
+[39] -> punya Hilmy
+[40] -> punya Darwis
+[41] -> punya Didi
+[42] -> punya Didi
+[43] -> punya Didi
+[44] -> punya Didi
+[45] -> punya Didi
+[46] -> punya Didi
+[47] -> punya Hilmy
+[48] -> punya Hilmy
+[49] -> punya Hilmy
+[50] -> punya Hilmy
+hilmyfausta@fausta:~$ 
