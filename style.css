@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --header-height: 3rem;
+
+  /* Colors*/
+  --title-color: #0f172a;       /* Deep Slate */
+  --text-color: #334155;        /* Slate Text */
+  --text-color-light: #64748b;  /* Muted Slate */
+  --container-color: #ffffff;   /* Pure White (Left Panel) */
+  --container-color-alt: #f8fafc; /* Subtle Cool Grey (Right Panel) */
+  --body-color: #e2e8f0;        /* Soft Outer Background */
+  --accent: #f38f23;            /* Professional Royal Blue Accent */
+  --link-color: #2563eb;        /* Matching Link Blue */
+
+  /* Fonts and typography */
+  --body-font: 'Noto Sans', sans-serif;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .875rem;
+  --smaller-font-size: .813rem;
+  --font-medium: 500;
+  --font-semi-bold: 600;  
+  
+  /* Margins */
+  --mb-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  line-height: 1.6;
+  font-family: var(--body-font);
+  color: var(--text-color);
+  background-color: var(--body-color);
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--title-color);
+  position: relative;
+  padding-bottom: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 32px;
+  height: 3px;
+  background-color: var(--accent);
+  border-radius: 2px;
+}
+
+h1 {
+  font-weight: var(--font-semi-bold);
+}
+
+section {
+  margin-bottom: 1rem;
+}
+
+#profile {
+  display: block;
+  width: 100%;
+  max-width: 18rem;
+  height: auto;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 6px;
+  margin: 0 auto 1.25rem;
+}
+
+.resume-left,
+.resume-right {
+  color: var(--text-color);
+  padding: clamp(1.25rem, 2.5vw, 2.25rem);
+}
+
+/* resume left  */
+.resume-left {
+  background-color: var(--text-color);
+  color: var(--body-color);
+  flex: 0 0 32%;
+}
+
+.resume-left h2 {
+  color: #f8fafc;
+}
+
+.resume-right {
+  background-color: var(--container-color-alt);
+  flex: 1 1 68%;
+}
+
+.right-side {
+  margin-left: auto;
+}
+
+main {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: min(100%, 1200px);
+  max-width: 1200px;
+  margin: 1.5rem auto; 
+  padding: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 1rem 3rem rgba(15, 23, 42, 0.1);
+}
+
+.section-title {
+  color: var(--title-color);
+}
+
+/* title */
+.title-name {
+  font-weight: 300;
+}
+
+.highlighted {
+  font-weight: 700;
+}
+
+/* skills */
+.skill-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.skill-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.skill-icon {
+  color: var(--accent);
+  font-size: 1.4rem ;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #f79731;
+}
+
+a:hover  {
+  color: #f79731;
+  text-decoration: underline;
+}
+
+.edu-container {
+  display: flex;
+  flex-direction: row;
+}
+
+
+ul {
+  padding-left: 1rem;
+}
+
+ul li::marker {
+  color: var(--accent);
+  content: "▪ "
+}
+
+li, p {
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0;
+  }
+
+  main{
+    flex-direction: column;
+    min-height: 0;
+    box-shadow: none;
+  }
+
+  #profile {
+    width: 100%;
+    max-width: 18rem;
+  }
+
+  .resume-left,
+  .resume-right {
+    padding: 2rem 1.5rem;
+  }
+}
