@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dilil | Portofolio</title>
+
+    <!-- Fonts: Syne (Headings) & DM Sans (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Syne:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neo-bg': '#FDFD96',       /* Soft Butter Yellow */
+                        'neo-melon': '#FFB7B2',    /* Pastel Melon */
+                        'neo-mint': '#B5EAD7',     /* Mint Green */
+                        'neo-lavender': '#C7CEEA', /* Periwinkle/Lavender */
+                        'neo-ink': '#2B2A4C',      /* Deep Indigo */
+                    },
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        dmsans: ['DM Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neo': '8px 8px 0px #2B2A4C',
+                        'neo-sm': '4px 4px 0px #2B2A4C',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FDFD96;
+            color: #2B2A4C;
+            overflow-x: hidden;
+        }
+
+        /* Neo-Brutalism Button/Card Click Effect */
+        .neo-interact {
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+
+        .neo-interact:active {
+            transform: translate(4px, 4px) !important;
+            box-shadow: 0px 0px 0px #2B2A4C !important;
+        }
+
+        /* Marquee Animation */
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            border-top: 4px solid #2B2A4C;
+            border-bottom: 4px solid #2B2A4C;
+            background-color: #C7CEEA;
+            padding: 1rem 0;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .marquee-content span {
+            margin: 0 2rem;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+
+<body class="font-dmsans antialiased selection:bg-neo-ink selection:text-neo-bg">
+
+    <!-- Navbar -->
+    <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-11/12 max-w-2xl">
+        <div
+            class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 flex justify-between items-center shadow-neo-sm">
+            <a href="#about" class="font-syne font-bold text-xl hover:text-neo-melon transition-colors">DILIL.</a>
+            <div class="hidden md:flex gap-6 font-bold text-sm uppercase">
+                <a href="#pengalaman"
+                    class="hover:bg-neo-lavender px-3 py-1 rounded-full transition-colors border-2 border-transparent hover:border-neo-ink">Pengalaman</a>
+                <a href="#prestasi"
+                    class="hover:bg-neo-mint px-3 py-1 rounded-full transition-colors border-2 border-transparent hover:border-neo-ink">Prestasi</a>
+                <a href="#skill"
+                    class="hover:bg-neo-melon px-3 py-1 rounded-full transition-colors border-2 border-transparent hover:border-neo-ink">Skill</a>
+                <a href="#kontak"
+                    class="hover:bg-neo-bg px-3 py-1 rounded-full transition-colors border-2 border-transparent hover:border-neo-ink">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. Hero & About Me -->
+    <section id="about"
+        class="min-h-screen flex flex-col justify-center px-6 md:px-20 pt-32 pb-20 max-w-7xl mx-auto relative">
+        <!-- Dekorasi acak -->
+        <div
+            class="absolute top-40 right-20 w-16 h-16 bg-neo-melon border-4 border-neo-ink rounded-full shadow-neo-sm animate-bounce">
+        </div>
+        <div
+            class="absolute bottom-40 left-10 w-24 h-24 bg-neo-mint border-4 border-neo-ink transform rotate-12 shadow-neo-sm">
+        </div>
+
+        <h1
+            class="font-syne text-6xl md:text-8xl lg:text-[140px] font-extrabold uppercase leading-[0.9] tracking-tighter mb-8">
+            Hi! I'm <br>
+            <span class="text-white drop-shadow-[4px_4px_0px_#2B2A4C] [-webkit-text-stroke:4px_#2B2A4C]">Dilil.</span>
+        </h1>
+
+        <div
+            class="bg-white border-4 border-neo-ink rounded-3xl p-8 max-w-3xl shadow-neo relative z-10 transform -rotate-1">
+            <p class="text-2xl font-syne font-bold mb-4 uppercase">I Love logic and obsessed with colorful systems.</p>
+            <p class="text-lg md:text-xl font-medium leading-relaxed">
+               Mahasiswa Informatika ITS yang tumbuh di lingkungan competitive programming namun kini fokus memperdalam Full-stack Development dan Computer Networking.
+
+Saya terbiasa menangani logika sistem yang kompleks dan struktur data efisien, 
+lalu menerapkannya ke pemrosesan end-to-end: mulai dari
+ merancang user interface yang fungsional, membangun 
+ arsitektur sistem backend, hingga memahami aliran data 
+ di tingkat jaringan. Selain urusan teknis, saya juga aktif 
+ memegang peran eksekutif di berbagai event besar.
+</p>
+            <div class="mt-8">
+                <a href="#pengalaman"
+                    class="inline-block bg-neo-lavender border-4 border-neo-ink font-syne font-bold text-xl uppercase px-8 py-4 rounded-full shadow-neo neo-interact hover:-rotate-3">
+                    Lihat Portofolio &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Pengalaman -->
+    <section id="pengalaman" class="px-6 md:px-20 py-24 max-w-7xl mx-auto">
+        <h2
+            class="font-syne text-5xl md:text-7xl font-extrabold uppercase mb-16 border-b-8 border-neo-ink pb-4 inline-block">
+            Pengalaman</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+
+            <!-- Card 2 -->
+            <div
+                class="bg-neo-melon border-4 border-neo-ink rounded-[2rem] p-8 shadow-neo transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                <div class="font-syne font-bold text-3xl mb-2">Schematics 2026</div>
+                <div
+                    class="font-bold uppercase tracking-wider text-sm bg-white border-2 border-neo-ink rounded-full px-4 py-1 inline-block mb-6 shadow-neo-sm">
+                    National Programming Competition</div>
+                <p class="text-lg font-medium">Mengelola spesifikasi problem dan <em>quality control</em> kompetisi
+                    berskala nasional. Memastikan logika dan kompleksitas algoritma berada di standar tertinggi.</p>
+            </div>
+
+            <!-- Card 2: MabaCup -->
+            <div
+                class="bg-neo-lavender border-4 border-neo-ink rounded-[2rem] p-8 shadow-neo transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="font-syne font-bold text-3xl mb-2">MabaCup, Ini Lho ITS! & Gerigi</div>
+                <div
+                    class="font-bold uppercase tracking-wider text-sm bg-white border-2 border-neo-ink rounded-full px-4 py-1 inline-block mb-6 shadow-neo-sm">
+                    Merchandise & Fundraising
+                </div>
+                <p class="text-lg font-medium">Mengelola pengadaan PDH panitia, serta operasional penjualan makanan dan
+                    <em>merchandise</em> untuk pendanaan ketiga acara tersebut.</p>
+            </div>
+
+            <!-- Card: IFXplore -->
+            <div
+                class="bg-neo-bg border-4 border-neo-ink rounded-[2rem] p-8 shadow-neo transform -rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="font-syne font-bold text-3xl mb-2">IFXplore</div>
+                <div
+                    class="font-bold uppercase tracking-wider text-sm bg-white border-2 border-neo-ink rounded-full px-4 py-1 inline-block mb-6 shadow-neo-sm">
+                    Core Committee & Peer Mentor</div>
+                <p class="text-lg font-medium">Mengelola operasional logistik acara dan menjadi <em>peer mentor</em>
+                    untuk delegasi mahasiswa internasional.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Prestasi -->
+    <section id="prestasi" class="px-6 md:px-20 py-24 bg-white border-y-4 border-neo-ink">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-syne text-5xl md:text-7xl font-extrabold uppercase mb-16 text-center">Prestasi</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: OSN -->
+                <div
+                    class="bg-neo-melon border-4 border-neo-ink rounded-3xl p-6 md:p-8 text-center shadow-neo transform hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div
+                            class="font-syne text-6xl lg:text-7xl font-extrabold [-webkit-text-stroke:2px_#2B2A4C] text-white drop-shadow-[4px_4px_0px_#2B2A4C]">
+                            37</div>
+                        <div class="font-bold text-xl mt-4 uppercase">Nasional</div>
+                    </div>
+                    <p class="mt-4 text-base font-medium">Olimpiade Sains Nasional (OSN) Informatika 2024</p>
+                </div>
+
+                <!-- Card 2: Codeforces -->
+                <div
+                    class="bg-neo-mint border-4 border-neo-ink rounded-3xl p-6 md:p-8 text-center shadow-neo transform hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div
+                            class="font-syne text-6xl lg:text-7xl font-extrabold [-webkit-text-stroke:2px_#2B2A4C] text-white drop-shadow-[4px_4px_0px_#2B2A4C]">
+                            1504</div>
+                        <div class="font-bold text-xl mt-4 uppercase">Peak Rating</div>
+                    </div>
+                    <p class="mt-4 text-base font-medium">Codeforces Competitive Programming</p>
+                </div>
+
+                <!-- Card 3: Srifoton -->
+                <div
+                    class="bg-neo-lavender border-4 border-neo-ink rounded-3xl p-6 md:p-8 text-center shadow-neo transform hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between">
+                    <div>
+                        <div
+                            class="font-syne text-6xl lg:text-7xl font-extrabold [-webkit-text-stroke:2px_#2B2A4C] text-white drop-shadow-[4px_4px_0px_#2B2A4C]">
+                            1st</div>
+                        <div class="font-bold text-xl mt-4 uppercase">Place</div>
+                    </div>
+                    <p class="mt-4 text-base font-medium">Srifoton Competitive Programming 2025 - Universitas Sriwijaya
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Skill -->
+    <section id="skill" class="py-24">
+        <h2
+            class="font-syne text-5xl md:text-7xl font-extrabold uppercase mb-10 px-6 md:px-20 max-w-7xl mx-auto text-center">
+            Tech Arsenal</h2>
+
+        <!-- Marquee Ticker -->
+        <div class="marquee-wrapper mb-16 shadow-neo">
+            <div class="marquee-content">
+                <!-- Di-copy dua kali agar loop berjalan mulus -->
+                <span>C / C++ / Python / Shell Scripting / PostgreSQL / Linux WSL / Figma / DaVinci Resolve /
+                    Darktable</span>
+                <span>C / C++ / Python / Shell Scripting / PostgreSQL / Linux WSL / Figma / DaVinci Resolve /
+                    Darktable</span>
+            </div>
+        </div>
+
+        <!-- Bouncing Skill Pills -->
+        <div class="flex flex-wrap justify-center gap-4 px-6 max-w-4xl mx-auto">
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-melon neo-interact cursor-default">
+                C++ (CP)</div>
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-mint neo-interact cursor-default">
+                PostgreSQL</div>
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-lavender neo-interact cursor-default">
+                Algorithm Design</div>
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-melon neo-interact cursor-default">
+                Linux / WSL</div>
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-mint neo-interact cursor-default">
+                Figma UI</div>
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-lavender neo-interact cursor-default">
+                DaVinci Resolve</div>
+            <div
+                class="bg-white border-4 border-neo-ink rounded-full px-6 py-3 font-bold text-xl uppercase shadow-neo-sm hover:bg-neo-melon neo-interact cursor-default">
+                Data Structures</div>
+        </div>
+    </section>
+
+    <!-- 5. Kontak -->
+    <section id="kontak" class="bg-neo-lavender border-t-8 border-neo-ink px-6 md:px-20 pt-32 pb-16 text-center">
+        <h2
+            class="font-syne text-4xl sm:text-5         xl md:text-6xl lg:text-7xl font-extrabold uppercase leading-none mb-12">
+            Let's Build <br>
+            <span class="text-white drop-shadow-[6px_6px_0px_#2B2A4C] [-webkit-text-stroke:3px_#2B2A4C]">Something
+                Fun</span>
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-6 mt-16">
+            <a href="https://github.com/notdils" target="_blank"
+                class="bg-neo-bg border-4 border-neo-ink px-10 py-5 rounded-full font-syne font-bold text-2xl uppercase shadow-neo neo-interact hover:bg-white">
+                GitHub
+            </a>
+            <button onclick="openEmailModal()"
+                class="bg-neo-mint border-4 border-neo-ink px-10 py-5 rounded-full font-syne font-bold text-2xl uppercase shadow-neo neo-interact hover:bg-white cursor-pointer">
+                Email
+            </button>
+            <a href="https://linkedin.com/in/yahdilil-haq-sarifuddin/" target="_blank"
+                class="bg-neo-melon border-4 border-neo-ink px-10 py-5 rounded-full font-syne font-bold text-2xl uppercase shadow-neo neo-interact hover:bg-white">
+                LinkedIn
+            </a>
+        </div>
+
+        <div class="mt-32 font-bold uppercase border-t-4 border-neo-ink pt-8 max-w-2xl mx-auto">
+            &copy; 2026 Yahdilil Haq Sarifuddin.
+        </div>
+    </section>
+    <!-- Email Modal -->
+    <div id="emailModal"
+        class="fixed inset-0 bg-neo-ink/80 z-[100] hidden flex justify-center items-center backdrop-blur-sm px-4">
+        <div class="bg-white border-4 border-neo-ink shadow-[8px_8px_0px_#C7CEEA] rounded-[2rem] p-10 md:p-16 relative max-w-2xl w-full text-center transform transition-transform duration-300 scale-95 opacity-0"
+            id="modalContent">
+
+            <!-- Tombol X (Close) -->
+            <button onclick="closeEmailModal()"
+                class="absolute -top-5 -right-5 bg-neo-melon border-4 border-neo-ink w-14 h-14 rounded-full font-syne font-extrabold text-2xl flex items-center justify-center shadow-neo-sm hover:bg-white neo-interact z-10 cursor-pointer">
+                X
+            </button>
+
+            <h3 class="font-syne text-2xl md:text-3xl font-bold uppercase mb-8">Reach me at:</h3>
+
+            <!-- Teks Email -->
+            <div
+                class="bg-neo-bg border-4 border-neo-ink rounded-3xl py-6 px-4 md:px-8 shadow-neo-sm inline-block w-full break-words">
+                <span class="font-dmsans font-bold text-2xl md:text-4xl text-neo-ink">yahdililhaq08@gmail.com</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script Kontrol Modal -->
+    <script>
+        const emailModal = document.getElementById('emailModal');
+        const modalContent = document.getElementById('modalContent');
+
+        function openEmailModal() {
+            emailModal.classList.remove('hidden');
+            setTimeout(() => {
+                modalContent.classList.remove('scale-95', 'opacity-0');
+                modalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeEmailModal() {
+            modalContent.classList.remove('scale-100', 'opacity-100');
+            modalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                emailModal.classList.add('hidden');
+            }, 300);
+        }
+
+        emailModal.addEventListener('click', (e) => {
+            if (e.target === emailModal) {
+                closeEmailModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
