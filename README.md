@@ -71,4 +71,65 @@ Setiap VM punya NSG sendiri, dengan rule inbound yang mengizinkan:
   | vm-dilil | `ssh -p 5003 <user>@172.198.228.9` |
   | vm-wisy  | `ssh -p 5002 <user>@172.198.228.9` |
 
+## Bukti Distribusi Traffic
+### command
+```bash
+for i in $(seq 1 20); do
+  HTML=$(curl -s http://172.198.228.9)
+  if echo "$HTML" | grep -q "Yahdilil Haq Sarifuddin"; then
+    echo "[$i] -> punya Dilil"
+  elif echo "$HTML" | grep -q "Darwisy Ahmad Alfayyadl"; then
+    echo "[$i] -> punya Darwis"
+  elif echo "$HTML" | grep -q "Muhammad Adinata Parikesit"; then
+    echo "[$i] -> punya Didi"
+  elif echo "$HTML" | grep -q "Hilmy Fausta Pratama"; then
+    echo "[$i] -> punya Hilmy"
+  fi
+  sleep 0.3
+done
+```
+### output
+```
+[1] -> punya Dilil
+[2] -> punya Hilmy
+[3] -> punya Hilmy
+[4] -> punya Didi
+[5] -> punya Didi
+[6] -> punya Darwis
+[7] -> punya Hilmy
+[8] -> punya Hilmy
+[9] -> punya Darwis
+[10] -> punya Dilil
+[11] -> punya Didi
+[12] -> punya Dilil
+[13] -> punya Didi
+[14] -> punya Dilil
+[15] -> punya Darwis
+[16] -> punya Darwis
+[17] -> punya Dilil
+[18] -> punya Dilil
+[19] -> punya Dilil
+[20] -> punya Hilmy
+```
 
+
+```mermaid
+sequenceDiagram
+    participant Dev as Developer (git push)
+    participant GH as GitHub Actions
+    participant DH as Docker Hub
+    participant VM as VM (cron tiap 2 menit)
+
+    Dev->>GH: push ke branch main
+    GH->>GH: build image dari Dockerfile
+    GH->>DH: push image (tag latest + git SHA)
+    Note over VM: cron polling tiap 2 menit
+    VM->>DH: docker pull image terbaru
+    VM->>VM: bandingin image ID lama vs baru
+    alt image berubah
+        VM->>VM: stop + remove container lama
+        VM->>VM: run container baru (port 8080)
+    else image sama
+        VM->>VM: tidak ngapa-ngapain
+    end
+```
