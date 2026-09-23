@@ -10,34 +10,28 @@
 Tiap folder berisi source portofolio masing-masing + `Dockerfile` sendiri-sendiri (struktur & isi beda, karena tiap orang deploy image sendiri ke Docker Hub-nya masing-masing). Lihat `README.md` di dalam tiap folder untuk cara build & run lokal.
 
 ## Arsitektur
-
 ```mermaid
-flowchart TB
-    Internet(["Internet client<br/>(curl loop / browser)"])
+graph TD
+    Internet((Internet)) -->|http:// port 80| PIP[Public IP<br/>pip-team07-fp-lb]
+    PIP --> LB[Load Balancer<br/>lb-team07-fb — Standard SKU]
 
-    subgraph RG["Resource Group: LBE-NCC-07 (indiasouthcentral)"]
-        PIP["Public IP: pip-team07-fp-lb<br/>172.198.228.9<br/>kelompok07.indiasouthcentral.cloudapp.azure.com"]
+    LB -->|LB rule: FE 80 → BE 8080<br/>TCP, session persistence: None| BP[Backend Pool<br/>bp-team07-fp]
+    LB -->|Health Probe<br/>TCP 8080, interval 5s| BP
+    LB -->|Outbound Rule<br/>Outbonding| Internet
 
-        subgraph LB["Standard Load Balancer: lb-team07-fb"]
-            Rule["LB Rule: rule-team07-fp<br/>Frontend :80 → Backend :8080<br/>Session persistence: None"]
-            Probe["Health Probe: hp-team07-fp<br/>TCP :8080, every 5s"]
-        end
-
-        subgraph VNet["VNet: vnet-07 (10.0.0.0/16)"]
-            subgraph Subnet["Subnet: default (10.0.0.0/24)"]
-                VM1["vm-hilmy<br/>10.0.0.6<br/>Docker container :8080"]
-                VM2["vm-adi<br/>10.0.0.5<br/>Docker container :8080"]
-                VM3["vm-dilil<br/>10.0.0.4<br/>Docker container :8080"]
-                VM4["vm-wisy<br/>10.0.0.7<br/>Docker container :8080"]
-            end
-        end
+    subgraph VNet["vnet-07 (10.0.0.0/24)"]
+        BP --> VM1[vm-hilmy<br/>10.0.0.6:8080]
+        BP --> VM2[vm-dilil<br/>10.0.0.4:8080]
+        BP --> VM3[vm-adi<br/>10.0.0.5:8080]
+        BP --> VM4[vm-wisy<br/>10.0.0.7:8080]
     end
 
-    Internet -->|"HTTP :80"| PIP --> Rule
-    Rule -.->|"health check :8080"| Probe
-    Rule --> VM1 & VM2 & VM3 & VM4
-    Probe -.-> VM1 & VM2 & VM3 & VM4
+    LB -.->|NAT ssh_Hilmy :5001| VM1
+    LB -.->|NAT ssh_Dilil :5003| VM2
+    LB -.->|NAT ssh_didi :5004| VM3
+    LB -.->|NAT ssh_Darwis :5002| VM4
 ```
+
 ## Komponen
 | Resource | Nama | Detail |
 |---|---|---|
@@ -65,3 +59,16 @@ Setiap VM punya NSG sendiri, dengan rule inbound yang mengizinkan:
 - `80` (HTTP)
 - `443` (HTTPS)
 - `8080` (app port — dipakai health probe & LB rule)
+
+## Cara Akses
+- **App (via Load Balancer):** http://172.198.228.9 (atau `http://kelompok07.indiasouthcentral.cloudapp.azure.com`)
+- **SSH ke tiap VM** (VM tidak punya public IP sendiri, akses lewat NAT rule di LB):
+
+  | VM | SSH command |
+  |---|---|
+  | vm-hilmy | `ssh -p 5001 <user>@172.198.228.9` |
+  | vm-adi   | `ssh -p 5004 <user>@172.198.228.9` |
+  | vm-dilil | `ssh -p 5003 <user>@172.198.228.9` |
+  | vm-wisy  | `ssh -p 5002 <user>@172.198.228.9` |
+
+
